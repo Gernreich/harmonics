@@ -3,10 +3,9 @@
 **[← All projects](https://gernreich.github.io/)**
 
 Early programs by the author about whole-number ratios: how often each musical
-interval turns up among pairs of numbers, which pairs share a factor, and the
-Mandelbrot set. They were written in BASIC, translated into Fortran, and
-turned into C, some with the `f2c` translator (version of 22 July 1992) and
-some by hand.
+interval turns up among pairs of numbers, and which pairs share a factor. They
+were written in BASIC, translated into Fortran, and turned into C, some with
+the `f2c` translator (version of 22 July 1992) and some by hand.
 
 The BASIC programs were written in 1992 on a second-hand IBM PCjr in its
 Cartridge BASIC. The Fortran was translated from them and run through `f2c`
@@ -64,7 +63,6 @@ name:
 | Harmon4 | Lists every distinct ratio (2X+Y)/(X+Y) of at least 3/2 and counts how often each occurs. | BASIC |
 | Harmon5 | Draws one row per number with a dot at every multiple of each of its prime factors, so the dark gaps are the coprime pairs. | BASIC, Fortran |
 | Pattern | Prints every point (X, Y) where X and Y are both multiples of some A from 2 to 199: every pair with a common factor. | BASIC, Fortran, f2c, hand C |
-| Program1 | The Mandelbrot set on an 81 × 81 grid over −2 to 2. | BASIC, Fortran, f2c, hand C |
 
 ## Transcription notes
 
@@ -81,6 +79,3 @@ that will not run. Where a listing is odd, this is what the scan shows:
 - `harmon4.bas` line 90 reads `IF N= THEN 110`.
 - `harmon5.bas` has no line 300.
 - `pattern-f2c-c.pdf` is struck through in pink on the page.
-- The BASIC and Fortran Program1 listings were scanned together as one
-  two-page file and are split here. The BASIC page's handwritten title began as "Harmon 4.Bas" and was
-  crossed out to read "Program 1.Bas".

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""What the 1992 Harmon, Pattern and Program1 listings set out to compute,
+"""What the 1992 Harmon and Pattern listings set out to compute,
 worked out again with exact integer arithmetic. The listings themselves are
 kept unchanged in original/; this program does not run them.
 
@@ -16,8 +16,6 @@ Standard library only. Pictures are PNGs with no ancillary chunks at all
   results/harmon5.png    one row per number, a dot at each multiple of its primes
   results/pattern.txt    every (X, Y) that share a factor A, as Pattern prints it
   results/pattern.png    those points drawn
-  results/program1.txt   Mandelbrot members as screen coordinates
-  results/program1.png   those points drawn
 """
 import math
 import struct
@@ -218,50 +216,6 @@ def pattern_png():
     return png(size, size, lit, scale=2)
 
 
-def mandelbrot_members():
-    """Program1 steps A and B from -2 to 2 by 0.05 and iterates
-    z -> z^2 + (A + Bi) up to 100 times, stopping when either part of z
-    passes 2. Points that never stop are members. On this grid that test
-    agrees with the usual |z| > 2 at every point; the assert checks it."""
-    for i in range(81):
-        a = -2 + i * 0.05
-        for j in range(81):
-            b = -2 + j * 0.05
-            c, d, own, usual = a, b, True, True
-            for _ in range(100):
-                c, d = c * c - d * d + a, 2 * c * d + b
-                if c * c + d * d > 4:
-                    usual = False
-                if c > 2 or d > 2:
-                    own = False
-                    break
-            assert own == usual, (a, b)
-            if own:
-                yield a, b
-
-
-def program1_txt():
-    lines = ["# Program1: Mandelbrot members on the 81 x 81 grid from -2 to 2,",
-             "# as the listing's screen coordinates AA = 159A + 318, BB = 98B + 196."]
-    lines += [f"{round(159 * a + 318)} {round(98 * b + 196)}"
-              for a, b in mandelbrot_members()]
-    return "\n".join(lines) + "\n"
-
-
-def program1_png():
-    """Drawn with the listing's own scaling on a 640 x 400 canvas, the height
-    that scaling needs (the PCjr's 640 x 200 screen showed only the top half).
-    Each point is a 3 x 3 block so the grid shows."""
-    w, h = 640, 400
-    rows = [[0] * w for _ in range(h)]
-    for a, b in mandelbrot_members():
-        x0, y0 = round(159 * a + 318), round(98 * b + 196)
-        for y in range(max(y0 - 1, 0), min(y0 + 2, h)):
-            for x in range(max(x0 - 1, 0), min(x0 + 2, w)):
-                rows[y][x] = 255
-    return png(w, h, rows)
-
-
 # (name, title, what it does, forms on paper, result shown on the page)
 PROGRAMS = [
     ("harmon1", "Harmon1",
@@ -292,10 +246,6 @@ PROGRAMS = [
     ("pattern", "Pattern",
      "Prints every point (X, Y) up to 199 where X and Y are both multiples of some "
      "A from 2 to 199: every pair with a common factor, 24,471 lines in all.",
-     ["bas", "f", "f2c-c", "fixed-c"], "png"),
-    ("program1", "Program1",
-     "The Mandelbrot set on an 81 &times; 81 grid from &minus;2 to 2, drawn with the "
-     "listing&rsquo;s own screen scaling.",
      ["bas", "f", "f2c-c", "fixed-c"], "png"),
 ]
 
@@ -357,8 +307,8 @@ img { display: block; max-width: 100%; height: auto; image-rendering: pixelated;
 <h1>Harmonics</h1>
 <p class="back"><a href="https://gernreich.github.io/">&larr; All projects</a></p>
 <p>Programs written in 1992 in BASIC on a second-hand IBM PCjr, about whole-number
-ratios: how often each musical interval turns up among pairs of numbers, which
-pairs share a factor, and the Mandelbrot set. They were then translated into
+ratios: how often each musical interval turns up among pairs of numbers, and
+which pairs share a factor. They were then translated into
 Fortran and C. Several do not run as written, so each result below is what the
 program set out to compute, worked out again by
 <a href="harmonics.py">harmonics.py</a> with exact arithmetic. The listings
@@ -382,8 +332,6 @@ def outputs():
         "harmon5.png": harmon5(),
         "pattern.txt": pattern_txt().encode(),
         "pattern.png": pattern_png(),
-        "program1.txt": program1_txt().encode(),
-        "program1.png": program1_png(),
     }
     files = {f"results/{name}": data for name, data in results.items()}
     files["index.html"] = page(results)
