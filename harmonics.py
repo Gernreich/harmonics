@@ -141,24 +141,21 @@ def harmonic2(start=0.0, end=20.0, steps=200):
 
 def harmonic4():
     """Harmonic4 lists every distinct M = (2X+Y)/(X+Y) >= 3/2 for X, Y from
-    1 to 20, then tallies how often each occurs for X, Y from 1 to 10."""
-    distinct = []
+    1 to 20, then tallies how often each occurs. The listing tallies over
+    X, Y from 1 to 10, where most of the ratios never occur; tallied here
+    over the same 1 to 20 grid they came from, every ratio counts at least 1."""
+    tally = {}
     for x in range(1, 21):
         for y in range(1, 21):
             m = Fraction(2 * x + y, x + y)
-            if m >= Fraction(3, 2) and m not in distinct:
-                distinct.append(m)
-    tally = {m: 0 for m in distinct}
-    for x in range(1, 11):
-        for y in range(1, 11):
-            m = Fraction(2 * x + y, x + y)
-            if m in tally:
-                tally[m] += 1
+            if m >= Fraction(3, 2):
+                tally[m] = tally.get(m, 0) + 1
+    assert min(tally.values()) >= 1
     out = ["Harmonic4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y",
-           "from 1 to 20, smallest first, with how often it occurs for X, Y from",
-           f"1 to 10. {len(distinct)} ratios; {sum(1 for m in distinct if tally[m])} occur in the smaller grid.", "",
+           "from 1 to 20, smallest first, with how often it occurs in that grid.",
+           f"{len(tally)} ratios.", "",
            "  ratio    cents  count"]
-    for m in sorted(distinct):
+    for m in sorted(tally):
         out.append(f"{str(m):>7} {cents(m):8.1f} {tally[m]:6d}")
     return "\n".join(out) + "\n"
 
@@ -236,7 +233,9 @@ PROGRAMS = [
      ["bas", "f", "f2c-c", "fixed-c"], "txt"),
     ("harmonic4", "Harmonic4",
      "Lists every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X and Y up to 20, "
-     "then counts how often each occurs for X and Y up to 10.",
+     "then counts how often each occurs. The listing counts only up to 10, where "
+     "most of the ratios never occur; counted over the same grid up to 20, every "
+     "ratio occurs at least once.",
      ["bas"], "txt"),
     ("harmonic5", "Harmonic5",
      "Gives each screen row to a number, splits it into primes, and puts a dot at "
