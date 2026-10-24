@@ -6,9 +6,12 @@ Early programs by the author about whole-number ratios: how often each musical
 interval turns up among pairs of numbers, which pairs share a factor, and the
 Mandelbrot set. They were written in BASIC, translated into Fortran, and
 turned into C, some with the `f2c` translator (version of 22 July 1992) and
-some by hand. Several do not run as written; the table says what each was
-meant to do. They are the starting point of
-[coprime-intervals](https://github.com/Gernreich/coprime-intervals).
+some by hand.
+
+The BASIC programs were written in 1992 on a second-hand IBM PCjr in its
+Cartridge BASIC. The Fortran was translated from them and run through `f2c`
+the same year or soon after. Several do not run as written; the table says
+what each was meant to do. They are the starting point of [coprime-intervals](https://github.com/Gernreich/coprime-intervals).
 
 ## What is here
 
