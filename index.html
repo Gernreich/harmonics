@@ -41,11 +41,11 @@ are kept exactly as printed: the scans, and a transcription of each.</p>
 <p>They are the starting point of
 <a href="https://gernreich.github.io/coprime-intervals/">Coprime pairs and musical intervals</a>.</p>
 
-<section id="harmon1">
-<h2>Harmon1</h2>
+<section id="harmonic1">
+<h2>Harmonic1</h2>
 <p>For every pair 2 &le; D &le; C, works out (2C+D&minus;3)/(C+D&minus;2), which always lies between 3/2 and 2, and counts how often it lands exactly on each of 11 intervals. Prints the totals each time C reaches 2, 3, 5, 9, &hellip; 32769. The totals turn out to be &lfloor;(C&minus;1)/(p&minus;q)&rfloor;, so intervals with the same p&minus;q always tie: 7/4 with 8/5, 9/5 with 11/7, and 11/6, 12/7, 13/8 and 14/9 together.</p>
-<p class="forms">BASIC: <a href="scans/harmon1-bas.pdf">scan</a>, <a href="original/harmon1.bas">text</a> &middot; Fortran: <a href="scans/harmon1-f.pdf">scan</a>, <a href="original/harmon1.f">text</a> &middot; C from f2c: <a href="scans/harmon1-f2c-c.pdf">scan</a>, <a href="original/harmon1-f2c.c">text</a> &middot; C by hand: <a href="scans/harmon1-fixed-c.pdf">scan</a>, <a href="original/harmon1-fixed.c">text</a></p>
-<pre>Harmon1: how many pairs 2 &lt;= D &lt;= C give (2C+D-3)/(C+D-2) = p/q,
+<p class="forms">BASIC: <a href="scans/harmonic1-bas.pdf">scan</a>, <a href="original/harmonic1.bas">text</a> &middot; Fortran: <a href="scans/harmonic1-f.pdf">scan</a>, <a href="original/harmonic1.f">text</a> &middot; C from f2c: <a href="scans/harmonic1-f2c-c.pdf">scan</a>, <a href="original/harmonic1-f2c.c">text</a> &middot; C by hand: <a href="scans/harmonic1-fixed-c.pdf">scan</a>, <a href="original/harmonic1-fixed.c">text</a></p>
+<pre>Harmonic1: how many pairs 2 &lt;= D &lt;= C give (2C+D-3)/(C+D-2) = p/q,
 totals printed each time C reaches 2, 3, 5, 9, ... 32769.
 Counted pair by pair up to C = 1025; above that from the formula
 floor((C-1)/(p-q)), which the counting confirms exactly.
@@ -72,11 +72,11 @@ floor((C-1)/(p-q)), which the counting confirms exactly.
 </pre>
 </section>
 
-<section id="harmon2">
-<h2>Harmon2</h2>
+<section id="harmonic2">
+<h2>Harmonic2</h2>
 <p>Reads a start, an end and a number of steps, walks along sin(x), and lists where the curve turns over. Shown for 0 to 20 in 200 steps.</p>
-<p class="forms">BASIC: <a href="scans/harmon2-bas.pdf">scan</a>, <a href="original/harmon2.bas">text</a> &middot; Fortran: <a href="scans/harmon2-f.pdf">scan</a>, <a href="original/harmon2.f">text</a> &middot; C from f2c: <a href="scans/harmon2-f2c-c.pdf">scan</a>, <a href="original/harmon2-f2c.c">text</a></p>
-<pre>Harmon2: turning points of sin(x) from 0 to 20 in 200 steps
+<p class="forms">BASIC: <a href="scans/harmonic2-bas.pdf">scan</a>, <a href="original/harmonic2.bas">text</a> &middot; Fortran: <a href="scans/harmonic2-f.pdf">scan</a>, <a href="original/harmonic2.f">text</a> &middot; C from f2c: <a href="scans/harmonic2-f2c-c.pdf">scan</a>, <a href="original/harmonic2-f2c.c">text</a></p>
+<pre>Harmonic2: turning points of sin(x) from 0 to 20 in 200 steps
 (step 0.1). Each is the sample where the curve turns over, with the
 true turning point (k + 1/2)pi beside it.
 
@@ -90,11 +90,11 @@ true turning point (k + 1/2)pi beside it.
 </pre>
 </section>
 
-<section id="harmon3">
-<h2>Harmon3</h2>
-<p>Harmon1&rsquo;s count, started again from zero each time the limit doubles. The listing never stops; the result stops at 1025.</p>
-<p class="forms">BASIC: <a href="scans/harmon3-bas.pdf">scan</a>, <a href="original/harmon3.bas">text</a> &middot; Fortran: <a href="scans/harmon3-f.pdf">scan</a>, <a href="original/harmon3.f">text</a> &middot; C from f2c: <a href="scans/harmon3-f2c-c.pdf">scan</a>, <a href="original/harmon3-f2c.c">text</a> &middot; C by hand: <a href="scans/harmon3-fixed-c.pdf">scan</a>, <a href="original/harmon3-fixed.c">text</a></p>
-<pre>Harmon3: B, then the interval counts for every pair 2 &lt;= D &lt;= C &lt;= B,
+<section id="harmonic3">
+<h2>Harmonic3</h2>
+<p>Harmonic1&rsquo;s count, started again from zero each time the limit doubles. The listing never stops; the result stops at 1025.</p>
+<p class="forms">BASIC: <a href="scans/harmonic3-bas.pdf">scan</a>, <a href="original/harmonic3.bas">text</a> &middot; Fortran: <a href="scans/harmonic3-f.pdf">scan</a>, <a href="original/harmonic3.f">text</a> &middot; C from f2c: <a href="scans/harmonic3-f2c-c.pdf">scan</a>, <a href="original/harmonic3-f2c.c">text</a> &middot; C by hand: <a href="scans/harmonic3-fixed-c.pdf">scan</a>, <a href="original/harmonic3-fixed.c">text</a></p>
+<pre>Harmonic3: B, then the interval counts for every pair 2 &lt;= D &lt;= C &lt;= B,
 recounted from scratch each pass. The listing never stops; this
 stops at B = 1025.
 
@@ -115,11 +115,11 @@ stops at B = 1025.
 </pre>
 </section>
 
-<section id="harmon4">
-<h2>Harmon4</h2>
+<section id="harmonic4">
+<h2>Harmonic4</h2>
 <p>Lists every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X and Y up to 20, then counts how often each occurs for X and Y up to 10.</p>
-<p class="forms">BASIC: <a href="scans/harmon4-bas.pdf">scan</a>, <a href="original/harmon4.bas">text</a></p>
-<pre>Harmon4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y
+<p class="forms">BASIC: <a href="scans/harmonic4-bas.pdf">scan</a>, <a href="original/harmonic4.bas">text</a></p>
+<pre>Harmonic4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y
 from 1 to 20, smallest first, with how often it occurs for X, Y from
 1 to 10. 128 ratios; 32 occur in the smaller grid.
 
@@ -255,11 +255,11 @@ from 1 to 20, smallest first, with how often it occurs for X, Y from
 </pre>
 </section>
 
-<section id="harmon5">
-<h2>Harmon5</h2>
+<section id="harmonic5">
+<h2>Harmonic5</h2>
 <p>Gives each screen row to a number, splits it into primes, and puts a dot at every multiple of each prime along the row. A dot means the column and row share a factor, so the dark gaps are the coprime pairs.</p>
-<p class="forms">BASIC: <a href="scans/harmon5-bas.pdf">scan</a>, <a href="original/harmon5.bas">text</a> &middot; Fortran: <a href="scans/harmon5-f.pdf">scan</a>, <a href="original/harmon5.f">text</a></p>
-<img src="results/harmon5.png" alt="Harmon5 result">
+<p class="forms">BASIC: <a href="scans/harmonic5-bas.pdf">scan</a>, <a href="original/harmonic5.bas">text</a> &middot; Fortran: <a href="scans/harmonic5-f.pdf">scan</a>, <a href="original/harmonic5.f">text</a></p>
+<img src="results/harmonic5.png" alt="Harmonic5 result">
 </section>
 
 <section id="pattern">

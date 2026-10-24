@@ -1,4 +1,4 @@
-Harmon3: B, then the interval counts for every pair 2 <= D <= C <= B,
+Harmonic3: B, then the interval counts for every pair 2 <= D <= C <= B,
 recounted from scratch each pass. The listing never stops; this
 stops at B = 1025.
 

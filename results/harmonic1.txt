@@ -1,4 +1,4 @@
-Harmon1: how many pairs 2 <= D <= C give (2C+D-3)/(C+D-2) = p/q,
+Harmonic1: how many pairs 2 <= D <= C give (2C+D-3)/(C+D-2) = p/q,
 totals printed each time C reaches 2, 3, 5, 9, ... 32769.
 Counted pair by pair up to C = 1025; above that from the formula
 floor((C-1)/(p-q)), which the counting confirms exactly.

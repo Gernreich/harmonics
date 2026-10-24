@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""What the 1992 Harmon and Pattern listings set out to compute,
+"""What the 1992 Harmonic and Pattern listings set out to compute,
 worked out again with exact integer arithmetic. The listings themselves are
 kept unchanged in original/; this program does not run them.
 
@@ -9,11 +9,11 @@ kept unchanged in original/; this program does not run them.
 Standard library only. Pictures are PNGs with no ancillary chunks at all
 (no text, no gamma, no colour profile, no pHYs).
 
-  results/harmon1.txt    interval counts at C = 2, 3, 5, 9, ... 32769
-  results/harmon2.txt    turning points of sin(x) for 0 to 20 in 200 steps
-  results/harmon3.txt    the same counts recounted from scratch each pass
-  results/harmon4.txt    every distinct ratio (2X+Y)/(X+Y) >= 3/2 and its tally
-  results/harmon5.png    one row per number, a dot at each multiple of its primes
+  results/harmonic1.txt    interval counts at C = 2, 3, 5, 9, ... 32769
+  results/harmonic2.txt    turning points of sin(x) for 0 to 20 in 200 steps
+  results/harmonic3.txt    the same counts recounted from scratch each pass
+  results/harmonic4.txt    every distinct ratio (2X+Y)/(X+Y) >= 3/2 and its tally
+  results/harmonic5.png    one row per number, a dot at each multiple of its primes
   results/pattern.txt    every (X, Y) that share a factor A, as Pattern prints it
   results/pattern.png    those points drawn
 """
@@ -28,7 +28,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 RESULTS = HERE / "results"
 
-# The 11 intervals of Harmon1 and Harmon3, in the order the listings test
+# The 11 intervals of Harmonic1 and Harmonic3, in the order the listings test
 # them and print them (counters F to P).
 INTERVALS = [(3, 2), (5, 3), (7, 4), (8, 5), (9, 5), (11, 7), (11, 6),
              (12, 7), (13, 8), (14, 9), (13, 7)]
@@ -73,8 +73,8 @@ def count_pairs(c_from, c_to, counts):
                 counts[key] += 1
 
 
-def harmon1():
-    """Harmon1 prints running totals each time C = D = B, with B running
+def harmonic1():
+    """Harmonic1 prints running totals each time C = D = B, with B running
     2, 3, 5, 9, ... 2^k + 1 up to 32769. Writing n = C-1, m = D-1 the ratio is
     1 + n/(n+m), which equals p/q exactly when (n, m) is a multiple of
     (p-q, 2q-p), so the total up to C is floor((C-1)/(p-q)). The pairs are
@@ -82,7 +82,7 @@ def harmon1():
     gives the totals, since counting 5 x 10^8 pairs one by one adds nothing."""
     checkpoints = [2 ** k + 1 for k in range(16)]
     counts = {pq: 0 for pq in INTERVALS}
-    out = ["Harmon1: how many pairs 2 <= D <= C give (2C+D-3)/(C+D-2) = p/q,",
+    out = ["Harmonic1: how many pairs 2 <= D <= C give (2C+D-3)/(C+D-2) = p/q,",
            "totals printed each time C reaches 2, 3, 5, 9, ... 32769.",
            "Counted pair by pair up to C = 1025; above that from the formula",
            "floor((C-1)/(p-q)), which the counting confirms exactly.", ""]
@@ -99,11 +99,11 @@ def harmon1():
     return "\n".join(out) + "\n"
 
 
-def harmon3():
-    """Harmon3 prints B, recounts every pair from C = 2 up to B, prints the
+def harmonic3():
+    """Harmonic3 prints B, recounts every pair from C = 2 up to B, prints the
     totals, zeroes them and doubles the step: B = 2, 3, 5, 9, ... for ever.
     Stopped here at B = 1025."""
-    out = ["Harmon3: B, then the interval counts for every pair 2 <= D <= C <= B,",
+    out = ["Harmonic3: B, then the interval counts for every pair 2 <= D <= C <= B,",
            "recounted from scratch each pass. The listing never stops; this",
            "stops at B = 1025.", ""]
     out += interval_header()
@@ -120,13 +120,13 @@ def harmon3():
     return "\n".join(out) + "\n"
 
 
-def harmon2(start=0.0, end=20.0, steps=200):
-    """Harmon2 reads a start, an end and a number of steps, walks along
+def harmonic2(start=0.0, end=20.0, steps=200):
+    """Harmonic2 reads a start, an end and a number of steps, walks along
     sin(x) and records each sample where the curve turns over."""
     d = (end - start) / steps
     xs = [start + i * d for i in range(steps + 1)]
     ys = [math.sin(x) for x in xs]
-    out = [f"Harmon2: turning points of sin(x) from {start:g} to {end:g} in {steps} steps",
+    out = [f"Harmonic2: turning points of sin(x) from {start:g} to {end:g} in {steps} steps",
            f"(step {d:g}). Each is the sample where the curve turns over, with the",
            "true turning point (k + 1/2)pi beside it.", "",
            "        x     sin(x)   kind     true x"]
@@ -139,8 +139,8 @@ def harmon2(start=0.0, end=20.0, steps=200):
     return "\n".join(out) + "\n"
 
 
-def harmon4():
-    """Harmon4 lists every distinct M = (2X+Y)/(X+Y) >= 3/2 for X, Y from
+def harmonic4():
+    """Harmonic4 lists every distinct M = (2X+Y)/(X+Y) >= 3/2 for X, Y from
     1 to 20, then tallies how often each occurs for X, Y from 1 to 10."""
     distinct = []
     for x in range(1, 21):
@@ -154,7 +154,7 @@ def harmon4():
             m = Fraction(2 * x + y, x + y)
             if m in tally:
                 tally[m] += 1
-    out = ["Harmon4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y",
+    out = ["Harmonic4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y",
            "from 1 to 20, smallest first, with how often it occurs for X, Y from",
            f"1 to 10. {len(distinct)} ratios; {sum(1 for m in distinct if tally[m])} occur in the smaller grid.", "",
            "  ratio    cents  count"]
@@ -176,8 +176,8 @@ def prime_factors(n):
     return ps
 
 
-def harmon5():
-    """Harmon5 gives screen row Y to the number Y, splits it into primes, and
+def harmonic5():
+    """Harmonic5 gives screen row Y to the number Y, splits it into primes, and
     for each prime p plots S = 0, p, 2p, ... up to 159. Rows 0 and 1 have no
     prime factors and stay blank. A dot at (S, Y) means S and Y share a
     factor, so the dark gaps are the coprime pairs."""
@@ -218,7 +218,7 @@ def pattern_png():
 
 # (name, title, what it does, forms on paper, result shown on the page)
 PROGRAMS = [
-    ("harmon1", "Harmon1",
+    ("harmonic1", "Harmonic1",
      "For every pair 2 &le; D &le; C, works out (2C+D&minus;3)/(C+D&minus;2), which always "
      "lies between 3/2 and 2, and counts how often it lands exactly on each of 11 "
      "intervals. Prints the totals each time C reaches 2, 3, 5, 9, &hellip; 32769. "
@@ -226,19 +226,19 @@ PROGRAMS = [
      "the same p&minus;q always tie: 7/4 with 8/5, 9/5 with 11/7, and 11/6, 12/7, 13/8 "
      "and 14/9 together.",
      ["bas", "f", "f2c-c", "fixed-c"], "txt"),
-    ("harmon2", "Harmon2",
+    ("harmonic2", "Harmonic2",
      "Reads a start, an end and a number of steps, walks along sin(x), and lists "
      "where the curve turns over. Shown for 0 to 20 in 200 steps.",
      ["bas", "f", "f2c-c"], "txt"),
-    ("harmon3", "Harmon3",
-     "Harmon1&rsquo;s count, started again from zero each time the limit doubles. "
+    ("harmonic3", "Harmonic3",
+     "Harmonic1&rsquo;s count, started again from zero each time the limit doubles. "
      "The listing never stops; the result stops at 1025.",
      ["bas", "f", "f2c-c", "fixed-c"], "txt"),
-    ("harmon4", "Harmon4",
+    ("harmonic4", "Harmonic4",
      "Lists every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X and Y up to 20, "
      "then counts how often each occurs for X and Y up to 10.",
      ["bas"], "txt"),
-    ("harmon5", "Harmon5",
+    ("harmonic5", "Harmonic5",
      "Gives each screen row to a number, splits it into primes, and puts a dot at "
      "every multiple of each prime along the row. A dot means the column and row "
      "share a factor, so the dark gaps are the coprime pairs.",
@@ -325,11 +325,11 @@ are kept exactly as printed: the scans, and a transcription of each.</p>
 
 def outputs():
     results = {
-        "harmon1.txt": harmon1().encode(),
-        "harmon2.txt": harmon2().encode(),
-        "harmon3.txt": harmon3().encode(),
-        "harmon4.txt": harmon4().encode(),
-        "harmon5.png": harmon5(),
+        "harmonic1.txt": harmonic1().encode(),
+        "harmonic2.txt": harmonic2().encode(),
+        "harmonic3.txt": harmonic3().encode(),
+        "harmonic4.txt": harmonic4().encode(),
+        "harmonic5.png": harmonic5(),
         "pattern.txt": pattern_txt().encode(),
         "pattern.png": pattern_png(),
     }

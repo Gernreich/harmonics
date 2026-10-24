@@ -1,4 +1,4 @@
-Harmon4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y
+Harmonic4: every distinct ratio (2X+Y)/(X+Y) of at least 3/2 for X, Y
 from 1 to 20, smallest first, with how often it occurs for X, Y from
 1 to 10. 128 ratios; 32 occur in the smaller grid.
 

@@ -37,7 +37,7 @@ metadata.
 
 ## A result the counts were heading for
 
-Harmon1 and Harmon3 count the pairs 2 ≤ D ≤ C whose (2C+D−3)/(C+D−2) equals
+Harmonic1 and Harmonic3 count the pairs 2 ≤ D ≤ C whose (2C+D−3)/(C+D−2) equals
 an interval p/q. Writing n = C−1 and m = D−1, the ratio is 1 + n/(n+m), which
 equals p/q exactly when (n, m) is a multiple of (p−q, 2q−p). So the count up
 to C is ⌊(C−1)/(p−q)⌋, and intervals with the same p−q always tie: 7/4 with
@@ -50,18 +50,18 @@ name:
 
 | Form | Scan | Transcription |
 |---|---|---|
-| BASIC original | `harmon1-bas.pdf` | `harmon1.bas` |
-| Fortran translation | `harmon1-f.pdf` | `harmon1.f` |
-| C from `f2c` | `harmon1-f2c-c.pdf` | `harmon1-f2c.c` |
-| C by hand, marked "Fixed" | `harmon1-fixed-c.pdf` | `harmon1-fixed.c` |
+| BASIC original | `harmonic1-bas.pdf` | `harmonic1.bas` |
+| Fortran translation | `harmonic1-f.pdf` | `harmonic1.f` |
+| C from `f2c` | `harmonic1-f2c-c.pdf` | `harmonic1-f2c.c` |
+| C by hand, marked "Fixed" | `harmonic1-fixed-c.pdf` | `harmonic1-fixed.c` |
 
 | Program | What it does | Forms |
 |---|---|---|
-| Harmon1 | For every pair n ≥ m, works out (2n+m)/(n+m), which always lies between 3/2 and 2, and counts how often it lands on each of 11 intervals: 3/2, 5/3, 7/4, 8/5, 9/5, 11/7, 11/6, 12/7, 13/8, 14/9, 13/7. Prints running totals. | BASIC, Fortran, f2c, hand C |
-| Harmon2 | Walks along sin(x) from a start to an end and lists where it turns over. | BASIC, Fortran, f2c |
-| Harmon3 | Harmon1's count, started again from zero each time the limit doubles. | BASIC, Fortran, f2c, hand C |
-| Harmon4 | Lists every distinct ratio (2X+Y)/(X+Y) of at least 3/2 and counts how often each occurs. | BASIC |
-| Harmon5 | Draws one row per number with a dot at every multiple of each of its prime factors, so the dark gaps are the coprime pairs. | BASIC, Fortran |
+| Harmonic1 | For every pair n ≥ m, works out (2n+m)/(n+m), which always lies between 3/2 and 2, and counts how often it lands on each of 11 intervals: 3/2, 5/3, 7/4, 8/5, 9/5, 11/7, 11/6, 12/7, 13/8, 14/9, 13/7. Prints running totals. | BASIC, Fortran, f2c, hand C |
+| Harmonic2 | Walks along sin(x) from a start to an end and lists where it turns over. | BASIC, Fortran, f2c |
+| Harmonic3 | Harmonic1's count, started again from zero each time the limit doubles. | BASIC, Fortran, f2c, hand C |
+| Harmonic4 | Lists every distinct ratio (2X+Y)/(X+Y) of at least 3/2 and counts how often each occurs. | BASIC |
+| Harmonic5 | Draws one row per number with a dot at every multiple of each of its prime factors, so the dark gaps are the coprime pairs. | BASIC, Fortran |
 | Pattern | Prints every point (X, Y) where X and Y are both multiples of some A from 2 to 199: every pair with a common factor. | BASIC, Fortran, f2c, hand C |
 
 ## Transcription notes
@@ -69,13 +69,16 @@ name:
 The transcriptions copy the listings character for character, including lines
 that will not run. Where a listing is odd, this is what the scan shows:
 
-- `harmon1-f2c.c` starts at the constant table, with no `f2c` banner and no
+- On paper the programs are titled Harmon1 to Harmon5, and the `f2c` headers
+  name the Fortran files `HARMON2.f` and `HARMON3.f`. Here they are called
+  Harmonic1 to Harmonic5; the listings themselves are unchanged.
+- `harmonic1-f2c.c` starts at the constant table, with no `f2c` banner and no
   `#include "f2c.h"`, and its function is named `MAIN()` although its closing
   comment says `MAIN__`.
-- `harmon3-fixed.c` ends at `o = 0;`: there is no `p = 0;`, no closing braces,
+- `harmonic3-fixed.c` ends at `o = 0;`: there is no `p = 0;`, no closing braces,
   and no jump back to `L30`. The page may have been the first of two.
-- In both hand-written C Harmon programs the tests read
+- In both hand-written C Harmonic programs the tests read
   `fabs(e-(3.0/2.0)<0.0001)`, with the comparison inside `fabs`.
-- `harmon4.bas` line 90 reads `IF N= THEN 110`.
-- `harmon5.bas` has no line 300.
+- `harmonic4.bas` line 90 reads `IF N= THEN 110`.
+- `harmonic5.bas` has no line 300.
 - `pattern-f2c-c.pdf` is struck through in pink on the page.
