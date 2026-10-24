@@ -1,0 +1,11 @@
+Harmon2: turning points of sin(x) from 0 to 20 in 200 steps
+(step 0.1). Each is the sample where the curve turns over, with the
+true turning point (k + 1/2)pi beside it.
+
+        x     sin(x)   kind     true x
+   1.6000    0.99957   peak      1.5708
+   4.7000   -0.99992   trough    4.7124
+   7.9000    0.99894   peak      7.8540
+  11.0000   -0.99999   trough   10.9956
+  14.1000    0.99931   peak     14.1372
+  17.3000   -0.99977   trough   17.2788

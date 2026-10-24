@@ -13,12 +13,38 @@ Cartridge BASIC. The Fortran was translated from them and run through `f2c`
 the same year or soon after. Several do not run as written; the table says
 what each was meant to do. They are the starting point of [coprime-intervals](https://github.com/Gernreich/coprime-intervals).
 
+**[See the results](https://gernreich.github.io/harmonics/)**: each program,
+what it set out to compute, and its scan and transcription.
+
 ## What is here
 
-| Folder | Contents |
+| Path | Contents |
 |---|---|
 | `scans/` | the printed listings, scanned, with the scanner's metadata removed |
 | `original/` | exact transcriptions of the scans, mistakes included |
+| `harmonics.py` | works out what each program set out to compute, with exact arithmetic, and writes `results/` and `index.html` |
+| `results/` | the tables, point lists and pictures it writes |
+
+The listings are kept as printed and are not run. Where they would not run, or
+would give wrong answers, `harmonics.py` computes what they were meant to:
+
+```
+python3 harmonics.py           # writes results/ and index.html
+python3 harmonics.py --check   # exits 1 if any of them would change
+```
+
+It needs only the Python standard library. Its pictures are PNGs with no
+metadata.
+
+## A result the counts were heading for
+
+Harmon1 and Harmon3 count the pairs 2 ≤ D ≤ C whose (2C+D−3)/(C+D−2) equals
+an interval p/q. Writing n = C−1 and m = D−1, the ratio is 1 + n/(n+m), which
+equals p/q exactly when (n, m) is a multiple of (p−q, 2q−p). So the count up
+to C is ⌊(C−1)/(p−q)⌋, and intervals with the same p−q always tie: 7/4 with
+8/5, 9/5 with 11/7, and 11/6, 12/7, 13/8 and 14/9 together. `harmonics.py`
+counts pair by pair up to C = 1025 and checks the formula against every
+total.
 
 Each program comes in up to four forms. The scan and the transcription share a
 name:
