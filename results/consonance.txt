@@ -1,0 +1,28 @@
+The consonance rating the counting programs produce, beside four rules for
+how simple a ratio p/q is. 1 = most consonant; equal scores share a rank.
+The count is how many pairs up to C = 32769 land on the interval:
+floor(32768/(p-q)), so the programs' rank is the rank of p-q.
+
+ratio  interval        count   programs  p2+q2  p+q  Tenney p*q  Euler
+                                  (p-q)
+  3/2  perfect 5th    32768        1       1    1           1      1
+  5/3  major 6th      16384        2       2    2           2      2
+  7/4  harmonic 7th   10922        3       3    3           3      4
+  8/5  minor 6th      10922        3       4    4           4      3
+  9/5  minor 7th       8192        4       5    5           5      4
+ 11/7                  8192        4       7    7           7      9
+ 11/6                  6553        5       6    6           6      7
+ 12/7                  6553        5       8    8           8      5
+ 13/8                  6553        5      10   10          10      8
+ 14/9                  6553        5      11   11          11      6
+ 13/7                  5461        6       9    9           9     10
+
+Rank correlation (Spearman) of the programs' rating with each rule:
+  p^2 + q^2               0.90
+  p + q (Pythagorean)     0.90
+  p * q (Tenney)          0.90
+  Euler's gradus          0.85
+
+Harmonic4 over all 128 ratios from the 20 x 20 grid: its counts
+floor(20/(p-q)) take only 8 values, 96 ratios tie at 1, and the rank correlation
+with p^2 + q^2 is 0.74.
