@@ -469,6 +469,7 @@ terms, each interval once, and coprime-intervals rates them by height
 listed them.</p>
 
 {sections}
+<p class="credit" style="margin-top:2em;font-size:0.85em;opacity:0.75">The original programs are Michael Gernreich's; <a href="https://www.anthropic.com/claude">Claude</a> (Anthropic), working in Claude Code, co-wrote the transcriptions, the code and the documentation that present them. Commits Claude made carry a <code>Co-Authored-By: Claude</code> line.</p>
 </main>
 </body>
 </html>

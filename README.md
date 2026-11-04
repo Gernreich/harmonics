@@ -128,3 +128,7 @@ that will not run. Where a listing is odd, this is what the scan shows:
 - `harmonic4.bas` line 90 reads `IF N= THEN 110`.
 - `harmonic5.bas` has no line 300.
 - `pattern-f2c-c.pdf` is struck through in pink on the page.
+
+## Credits
+
+The original programs are Michael Gernreich's; [Claude](https://www.anthropic.com/claude) (Anthropic), working in Claude Code, co-wrote the transcriptions, the code and the documentation that present them. Commits Claude made carry a `Co-Authored-By: Claude` line.
