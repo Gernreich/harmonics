@@ -19,6 +19,7 @@ Standard library only. Pictures are PNGs with no ancillary chunks at all
   results/consonance.txt   the counts' rating beside four rules for consonance
 """
 import math
+import re
 import struct
 import sys
 import zlib
@@ -488,8 +489,22 @@ def outputs():
         "consonance.txt": consonance().encode(),
     }
     files = {f"results/{name}": data for name, data in results.items()}
-    files["index.html"] = page(results)
+    files["index.html"] = new_tab(page(results))
     return files
+
+
+
+def new_tab(data):
+    """Every link but an in-page #anchor opens in a new tab. A link written
+    inside a script string (href=\\"...\\") gets its quotes escaped the same way."""
+    def fix(m):
+        tag = m.group(0)
+        h = re.search(r'href\s*=\s*(\\?)["\']?([^"\'\\\s>]*)', tag)
+        if not h or h.group(2).startswith(("#", "?")) or re.search(r"\btarget\s*=", tag):
+            return tag
+        q = '\\"' if h.group(1) else '"'
+        return tag[:-1] + f" target={q}_blank{q} rel={q}noopener{q}>"
+    return re.sub(r"<a\b[^>]*>", fix, data.decode()).encode()
 
 
 def main():
