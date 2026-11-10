@@ -82,7 +82,7 @@ terms, each interval once, and coprime-intervals rates them by height
 |---|---|
 | `scans/` | the printed listings, scanned, with the scanner's metadata removed |
 | `original/` | exact transcriptions of the scans, mistakes included |
-| `harmonics.rs` · `harmonics_page.rs` | works out what each program set out to compute, with exact arithmetic, and writes `results/` and `index.html` |
+| `harmonics.rs` · `harmonics_page.rs` · `Cargo.toml` · `Cargo.lock` | works out what each program set out to compute, with exact arithmetic, and writes `results/` and `index.html` |
 | `results/` | the tables, point lists and pictures it writes, and `consonance.txt` |
 
 The listings are kept as printed and are not run. Where they would not run, or
