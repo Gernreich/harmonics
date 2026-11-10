@@ -1,0 +1,16 @@
+[package]
+name = "harmonics"
+version = "0.1.0"
+edition = "2021"
+authors = ["Michael Gernreich", "Claude (Anthropic) <noreply@anthropic.com>"]
+description = "The 1992 Harmonic and Pattern programs' results, worked out again with exact arithmetic"
+license-file = "LICENSE"
+
+# No dependencies but the system's zlib (linked in harmonics.rs), the one
+# Python's zlib module uses, so the PNGs are byte for byte the same.
+[[bin]]
+name = "harmonics"
+path = "harmonics.rs"
+
+[profile.release]
+opt-level = 3

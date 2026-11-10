@@ -82,19 +82,21 @@ terms, each interval once, and coprime-intervals rates them by height
 |---|---|
 | `scans/` | the printed listings, scanned, with the scanner's metadata removed |
 | `original/` | exact transcriptions of the scans, mistakes included |
-| `harmonics.py` | works out what each program set out to compute, with exact arithmetic, and writes `results/` and `index.html` |
+| `harmonics.rs` · `harmonics_page.rs` | works out what each program set out to compute, with exact arithmetic, and writes `results/` and `index.html` |
 | `results/` | the tables, point lists and pictures it writes, and `consonance.txt` |
 
 The listings are kept as printed and are not run. Where they would not run, or
-would give wrong answers, `harmonics.py` computes what they were meant to:
+would give wrong answers, `harmonics.rs` computes what they were meant to:
 
 ```
-python3 harmonics.py           # writes results/ and index.html
-python3 harmonics.py --check   # exits 1 if any of them would change
+cargo build --release
+target/release/harmonics           # writes results/ and index.html
+target/release/harmonics --check   # exits 1 if any of them would change
 ```
 
-It needs only the Python standard library. Its pictures are PNGs with no
-metadata. It counts Harmonic1's pairs one by one up to C = 1025 and checks
+It is Rust with no dependencies but the system's zlib, the one Python's zlib uses,
+so it writes the same bytes the Python original did (ported 2026-11-09). Its
+pictures are PNGs with no metadata. It counts Harmonic1's pairs one by one up to C = 1025 and checks
 ⌊(C−1)/(p−q)⌋ against every total.
 
 Each program comes in up to four forms. The scan and the transcription share a
